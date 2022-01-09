@@ -1,0 +1,6 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- 템플릿 엔진으로 치환되면 th:text 실행 / 그냥 실행시 hello! empty 실행 -->
+<!-- http://localhost:8080/hello-mvc?name=spring!!! 과 같이 name 값을 넘겨주어야 한다. -->
+<p th:text="'hello ' + ${name}">hello! empty</p>
+</body>
