@@ -6,16 +6,23 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class MemberController {
-
-//    private final MemberService memberService = new MemberService();
-    private final MemberService memberService;
-    // 여러 인스턴스를 생성할 필요가 없고 하나만 만들어 공유해서 쓰면 된다.
-    // 스프링 컨테이너에 등록하여 사용한면 된다.
-
+    // 여러 인스턴스를 생성할 필요가 없고 하나만 만들어 공유해서 쓰기 위해 스프링 컨테이너에 등록하여 사용한면 된다.
     // @Autowired를 생성자에 쓰면 MemberController가 생성될때,
-    // 스프링 빈으로 등록되어 있는 MemberService를 넣어준다.(의존관계 주입)
+    // 스프링 빈으로 등록되어 있는 MemberService를 넣어준다.(의존관계 주입 - 1. 생성자 주입)
+    private MemberService memberService;
+
     @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
+
+// 의존관계 주입 - 2. 필드 주입
+//    @Autowired private MemberService memberService;
+
+// 의존관계 주입 - 3. setter 주입
+//    private MemberService memberService;
+//    @Autowired
+//    public void setMemberService(MemberService memberService) {
+//        this.memberService = memberService;
+//    }
 }
